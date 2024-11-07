@@ -17,14 +17,18 @@ final class User: Model, Authenticatable {
     @Field(key: "email")
     var email: String
 
+    @Field(key: "name")
+    var name: String
+
     @Field(key: "passwordHash")
     var passwordHash: String
 
     init() {}
 
-    init(id: UUID? = nil, email: String, passwordHash: String) {
+    init(id: UUID? = nil, email: String, name: String, passwordHash: String) {
         self.id = id
         self.email = email
+        self.name = name
         self.passwordHash = passwordHash
     }
 }
