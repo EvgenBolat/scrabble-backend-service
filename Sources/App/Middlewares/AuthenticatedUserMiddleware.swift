@@ -25,7 +25,7 @@ struct AuthenticatedUserMiddleware: AsyncMiddleware {
         }
         catch is JWTError {
             guard let token = req.headers.bearerAuthorization?.token else {
-                throw Abort(.unauthorized, reason: "Invalid or expired token")
+                throw Abort(.unauthorized, reason: "No token")
             }
             let session =  try await Session.query(on: req.db).filter(\.$token == token).first()
             if let session {
